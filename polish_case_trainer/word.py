@@ -17,10 +17,46 @@ class Word(object):
             raise TypeError("case_forms must be a dict object")
         self.case_forms[number] = case_forms
 
+    def clear_case_forms(self):
+        self.case_forms = {}
+
     def supports(self, number, case):
         return number in self.case_forms and case in self.case_forms[number]
 
     def get_case_form(self, number, case):
         if not self.supports(number, case):
-            raise KeyError("This grammatical number and case are not supported")
+            raise CaseNotSupported(number, case)
         return self.case_forms[number][case]
+
+class Adjective(Word):
+
+    def __init__(self, *args):
+        super(Adjective, self).__init__(*args)
+        self.gender_case_forms = {}
+
+    def set_gender(self, gender):
+        if gender not in self.gender_case_forms:
+            raise GenderNotSupported(gender)
+        self.clear_case_forms()
+        for number, case_forms in self.gender_case_forms[gender].items():
+            self.set_case_forms(number, case_forms)
+
+    def set_gender_case_forms(self, gender, number, case_forms):
+        if not isinstance(case_forms, dict):
+            raise TypeError("case_forms must be a dict object")
+        if gender not in self.gender_case_forms:
+            self.gender_case_forms[gender] = {}
+        self.gender_case_forms[gender][number] = case_forms
+
+class CaseNotSupported(Exception):
+
+    def __init__(self, number, case):
+        self.number = number
+        self.case = case
+        Exception.__init__(self, "The case '{} {}' is not supported by this word".format(number, case))
+
+class GenderNotSupported(Exception):
+
+    def __init__(self, gender):
+        self.gender = gender
+        Exception.__init__(self, "The gender '{}' is not supported by this word".format(gender))

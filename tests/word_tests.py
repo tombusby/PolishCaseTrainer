@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from nose.tools import *
-from polish_case_trainer.word import Word
+from polish_case_trainer.word import Word, CaseNotSupported
 
 @raises(TypeError)
 def test_instanciation_fails_without_arguments():
@@ -41,7 +41,7 @@ def test_supports_method_correctly_identifies_available_case_forms():
     assert word.supports("plural", "nominative") is False
     assert word.supports("singular", "nominative") is True
 
-@raises(KeyError)
+@raises(CaseNotSupported)
 def test_get_case_form_throws_error_for_non_supported_forms():
     word = Word(u"dzień", "m inan")
     word.get_case_form("singular", "nominative")
@@ -53,3 +53,16 @@ def test_get_case_form_returns_correct_values():
     assert word.get_case_form("singular", "nominative") == "dzień"
     assert word.get_case_form("plural", "nominative") == "dni"
     assert word.get_case_form("plural", "locative") == "dniach"
+
+def test_clear_case_forms_functions_as_advertised():
+    word = Word(u"dzień", "m inan")
+    word.set_case_forms("singular", {"nominative": "dzień", "instrumental": "dniem"})
+    word.set_case_forms("plural", {"nominative": "dni", "locative": "dniach"})
+    assert word.get_case_form("singular", "nominative") == "dzień"
+    assert word.get_case_form("plural", "nominative") == "dni"
+    assert word.get_case_form("plural", "locative") == "dniach"
+    word.clear_case_forms()
+    assert not word.supports("singular", "nominative")
+    assert not word.supports("plural", "nominative")
+    assert not word.supports("plural", "locative")
+

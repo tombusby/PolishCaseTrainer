@@ -20,6 +20,11 @@ class Word(object):
     def clear_case_forms(self):
         self.case_forms = {}
 
+    def list_case_forms(self):
+        return [(number, case_name) \
+            for number, case_dict in self.case_forms.items() \
+            for case_name in case_dict.keys()]
+
     def supports(self, number, case):
         return number in self.case_forms and case in self.case_forms[number]
 
@@ -29,6 +34,7 @@ class Word(object):
         return self.case_forms[number][case]
 
 class Adjective(Word):
+    """ An adjective is just considered a word that can change its own gender """
 
     def __init__(self, *args):
         super(Adjective, self).__init__(*args)

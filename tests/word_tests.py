@@ -54,6 +54,18 @@ def test_get_case_form_returns_correct_values():
     assert word.get_case_form("plural", "nominative") == "dni"
     assert word.get_case_form("plural", "locative") == "dniach"
 
+def test_set_case_forms_overwrites_all_for_specific_number():
+    word = Word(u"dzień", "m inan")
+    word.set_case_forms("singular", {"nominative": "dzień", "instrumental": "dniem"})
+    word.set_case_forms("plural", {"nominative": "dni", "locative": "dniach"})
+    # Overwrite the values for singular
+    word.set_case_forms("singular", {"nominative": "something", "vocative": "else"})
+    assert not word.supports("singular", "instrumental")
+    assert word.get_case_form("singular", "nominative") == "something"
+    assert word.get_case_form("singular", "vocative") == "else"
+    assert word.get_case_form("plural", "nominative") == "dni"
+    assert word.get_case_form("plural", "locative") == "dniach"
+
 def test_clear_case_forms_functions_as_advertised():
     word = Word(u"dzień", "m inan")
     word.set_case_forms("singular", {"nominative": "dzień", "instrumental": "dniem"})
@@ -66,3 +78,14 @@ def test_clear_case_forms_functions_as_advertised():
     assert not word.supports("plural", "nominative")
     assert not word.supports("plural", "locative")
 
+def test_list_case_forms():
+    word = Word(u"dzień", "m inan")
+    assert word.list_case_forms() == []
+    word.set_case_forms("singular", {"nominative": "dzień", "instrumental": "dniem"})
+    word.set_case_forms("plural", {"nominative": "dni", "locative": "dniach"})
+    assert set(word.list_case_forms()) == set([
+        ("singular", "nominative"),
+        ("singular", "instrumental"),
+        ("plural", "nominative"),
+        ("plural", "locative"),
+    ])

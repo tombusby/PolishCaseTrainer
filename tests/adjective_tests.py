@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from nose.tools import *
+
 from polish_case_trainer.word import Adjective, Word, GenderNotSupported
+
 
 def test_Adjective_is_also_valid_Word_object():
     adjective = Adjective("dobry", "m")

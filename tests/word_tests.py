@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from nose.tools import *
+
 from polish_case_trainer.word import Word, CaseNotSupported
+
 
 @raises(TypeError)
 def test_instanciation_fails_without_arguments():

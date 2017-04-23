@@ -41,11 +41,15 @@ class Adjective(Word):
         self.gender_case_forms = {}
 
     def set_gender(self, gender):
-        if gender not in self.gender_case_forms:
+        if gender == "other" or gender not in self.gender_case_forms:
             raise GenderNotSupported(gender)
         self.clear_case_forms()
         for number, case_forms in self.gender_case_forms[gender].items():
             self.set_case_forms(number, case_forms)
+        if "other" in self.gender_case_forms:
+            for number, case_forms in self.gender_case_forms["other"].items():
+                if number not in self.case_forms:
+                    self.set_case_forms(number, case_forms)
 
     def set_gender_case_forms(self, gender, number, case_forms):
         if not isinstance(case_forms, dict):

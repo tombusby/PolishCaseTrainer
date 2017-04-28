@@ -51,3 +51,9 @@ It's best to accept that you will get most of them wrong to begin with. Keep pla
 * Create game mode that allows for practising irregular, common-word case forms such as pronouns
 * Create a mode for practising verb endings
 * Create a mode which is the reverse of the existing one: Provides the noun (+ gender) and a declined adjective/noun form. It then requests that you specify what case it is.
+
+## Misc
+
+If you're interested in how I acquired the list of correct noun/adjective forms, this python scrapy repository might be interesting to you:
+
+[https://github.com/tombusby/polish-case-scraping](https://github.com/tombusby/polish-case-scraping)

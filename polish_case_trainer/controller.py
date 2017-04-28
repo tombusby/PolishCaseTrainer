@@ -4,7 +4,7 @@ from .word_repository import WordRepository
 from .word_factory import WordFactory
 from .word_service import WordService
 from .word_bag import WordBag
-from .word import CaseNotSupported, GenderNotSupported
+from .word import GenderNotSupported
 
 
 class Controller:
@@ -19,7 +19,6 @@ class Controller:
         self._adjective_noun_case_trainer()
 
     def _adjective_noun_case_trainer(self):
-        print __name__
         print "\n(Ctrl+D to exit)\n"
         while True:
             noun, adjective, number, case = self._choose_compatible_noun_and_adjective()
@@ -66,7 +65,6 @@ class Controller:
             print "Correct!\n"
         else:
             print u"Incorrect, should have been {}\n".format(correct_forms)
-
 
 if __name__ == "__main__":
     Controller().main()

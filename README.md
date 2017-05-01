@@ -12,7 +12,7 @@ The traditional way of learning these things (memorising a table of endings, and
 Firstly, clone this repository:
 
 ```bash
-git clone git@github.com:tombusby/PolishCaseTrainer.git
+git clone https://github.com/tombusby/PolishCaseTrainer
 ```
 
 Then navigate into the `PolishCaseTrainer` directory (`cd PolishCaseTrainer`).
@@ -29,6 +29,12 @@ After this, we simply need to use Python's setup.py features to install the modu
 
 ```bash
 python setup.py install
+```
+
+If you want to develop this app, instead install with:
+
+```bash
+python setup.py develop
 ```
 
 Once this is completed you'll have access to the `polish_case_trainer` script that can be run from the command line at any time. It will be on the PATH so you don't need to be in a specific directory to run it.

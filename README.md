@@ -41,11 +41,41 @@ Once this is completed you'll have access to the `polish_case_trainer` script th
 
 ## Usage Instructions:
 
+Run the script with the command:
+
+```bash
+polish_case_trainer
+```
+
 You'll be presented with a random noun (and its gender) plus a random adjective. Translation is not provided. You are then presented with a case and grammatical number (e.g. Plural Genitive) and prompted to provide the correct declined forms.
 
 If you succeed you are congratulated, if you fail you are given the correct answer. The program then moves on to another random adjective/noun pair and requests another case.
 
 It's best to accept that you will get most of them wrong to begin with. Keep playing and your rate of correct choices will increase. When you're getting a near-100% correct response rate, you have successfully internalised the root-change and ending-change patterns.
+
+You can give extra flags when running the script if you want to practise a specific case or number. The `--n` flag can be used to filter by singular or plural, and the `--c` flag to filter by case. When using these flags, specify the cases and numbers using the first letter of their name. For example, if you want to study only (d)ative and (l)ocative case examples, you would run the script using:
+
+```bash
+polish_case_trainer --c dl
+```
+
+If you want to study only (s)ingulars of any case you could run:
+
+```bash
+polish_case_trainer --n s
+```
+
+You can also combine the flags, for example if you want to focus on (a)ccusative (p)lurals:
+
+```bash
+polish_case_trainer --n p --c a
+```
+
+The flags can be used to filter for many cases, for example (d)ative, (l)ocative, (i)nstrumental, and (a)ccusative. The order is not important:
+
+```bash
+polish_case_trainer --c dlia
+```
 
 ## Sample Output:
 

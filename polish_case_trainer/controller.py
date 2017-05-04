@@ -9,10 +9,17 @@ from .word import GenderNotSupported
 
 class Controller:
 
-    def __init__(self):
+    def __init__(self, number_options=[], case_options=[]):
         word_repository = WordRepository()
         word_factory = WordFactory()
         self.word_service = WordService(word_repository, word_factory)
+        self.options = {'number': ['singular', 'plural'],
+                            'case': ['nominative', 'accusative', 'genitive',
+                             'dative', 'instrumental', 'locative', 'vocative']}
+        if number_options:
+            self.options['number'] = [n for n in self.options['number'] if n[0] in number_options]
+        if case_options:
+            self.options['case'] = [case for case in self.options['case'] if case[0] in case_options]
 
     def main(self):
         # Opportunity to add a menu for other game modes here
@@ -45,8 +52,9 @@ class Controller:
             if not noun.list_case_forms():
                 continue
             number, case = random.choice(noun.list_case_forms())
-            if adjective.supports(number, case):
-                return noun, adjective, number, case
+            if number in self.options['number'] and case in self.options['case']:
+                if adjective.supports(number, case):
+                    return noun, adjective, number, case
 
     def _print_instructions(self, noun, adjective, number, case):
         print u"Noun: {} ({})\nAdjective: {}\nDecline for {} {}\n".format(

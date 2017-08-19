@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 from nose.tools import *
 
-from polish_case_trainer.word import Word, CaseNotSupported
+from polish_case_trainer.word.word import Word, CaseNotSupported
 
 
 @raises(TypeError)
-def test_instanciation_fails_without_arguments():
+def test_instantiation_fails_without_arguments():
     word = Word()
 
-def test_instanciation_succeeds_with_arguments():
+def test_instantiation_succeeds_with_arguments():
     word = Word(u"dzień", "m inan")
 
-def test_instanciation_accepts_valid_values():
+def test_instantiation_accepts_valid_values():
     basic_form = u"dzień"
     gender = "m inan"
     word = Word(basic_form, gender)
 
-def test_instanciated_values_are_accessible_via_getters():
+def test_instantiated_values_are_accessible_via_getters():
     basic_form = u"dzień"
     gender = "m inan"
     word = Word(basic_form, gender)

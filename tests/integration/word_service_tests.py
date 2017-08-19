@@ -2,9 +2,9 @@
 import os
 from nose.tools import *
 
-from polish_case_trainer.word_repository import WordRepository
-from polish_case_trainer.word_factory import WordFactory
-from polish_case_trainer.word_service import WordService
+from polish_case_trainer.word.word_repository import WordRepository
+from polish_case_trainer.word.word_factory import WordFactory
+from polish_case_trainer.word.word_service import WordService
 
 
 def test_retrieve_nouns():

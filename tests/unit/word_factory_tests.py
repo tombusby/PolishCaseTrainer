@@ -2,8 +2,8 @@
 import json
 from nose.tools import *
 
-from polish_case_trainer.word_factory import WordFactory
-from polish_case_trainer.word import Word, Adjective
+from polish_case_trainer.word.word_factory import WordFactory
+from polish_case_trainer.word.word import Word, Adjective
 
 
 noun_sample_obj = json.loads('{"url": "https://en.wiktionary.org/wiki/ogrodniczka", \

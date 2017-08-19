@@ -9,3 +9,4 @@ pyparsing==2.2.0
 rednose==1.2.2
 six==1.10.0
 termstyle==0.1.11
+inquirer==2.1.11

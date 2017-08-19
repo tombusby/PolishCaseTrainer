@@ -1,6 +1,6 @@
 from nose.tools import *
 
-from polish_case_trainer.word_bag import WordBag
+from polish_case_trainer.word.word_bag import WordBag
 
 
 @raises(TypeError)

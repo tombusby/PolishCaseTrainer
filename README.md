@@ -41,6 +41,8 @@ Once this is completed you'll have access to the `polish_case_trainer` script th
 
 ## Usage Instructions:
 
+Firstly, you'll get to choose whether you want to practise singular, plural or both, then you'll be given an option to choose which cases you want to practise. Obviously if you've chosen only singular, nominative is not available. The menu defaults to all-selected by default for both grammatical number and case.
+
 You'll be presented with a random noun (and its gender) plus a random adjective. Translation is not provided. You are then presented with a case and grammatical number (e.g. Plural Genitive) and prompted to provide the correct declined forms.
 
 If you succeed you are congratulated, if you fail you are given the correct answer. The program then moves on to another random adjective/noun pair and requests another case.

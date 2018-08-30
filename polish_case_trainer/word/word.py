@@ -21,9 +21,9 @@ class Word(object):
         self.case_forms = {}
 
     def list_case_forms(self):
-        return [(number, case_name) \
-            for number, case_dict in self.case_forms.items() \
-            for case_name in case_dict.keys()]
+        return [(number, case_name)
+                for number, case_dict in self.case_forms.items()
+                for case_name in case_dict.keys()]
 
     def supports(self, number, case):
         return number in self.case_forms and case in self.case_forms[number]
@@ -32,6 +32,7 @@ class Word(object):
         if not self.supports(number, case):
             raise CaseNotSupported(number, case)
         return self.case_forms[number][case]
+
 
 class Adjective(Word):
     """ An adjective is just considered a word that can change its own gender """
@@ -58,15 +59,19 @@ class Adjective(Word):
             self.gender_case_forms[gender] = {}
         self.gender_case_forms[gender][number] = case_forms
 
+
 class CaseNotSupported(Exception):
 
     def __init__(self, number, case):
         self.number = number
         self.case = case
-        Exception.__init__(self, "The case '{} {}' is not supported by this word".format(number, case))
+        Exception.__init__(
+            self, "The case '{} {}' is not supported by this word".format(number, case))
+
 
 class GenderNotSupported(Exception):
 
     def __init__(self, gender):
         self.gender = gender
-        Exception.__init__(self, "The gender '{}' is not supported by this word".format(gender))
+        Exception.__init__(
+            self, "The gender '{}' is not supported by this word".format(gender))

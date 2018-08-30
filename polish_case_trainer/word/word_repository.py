@@ -1,4 +1,5 @@
-import json, os
+import json
+import os
 
 
 class WordRepository:
@@ -7,7 +8,8 @@ class WordRepository:
         if dir_path is None:
             dir_path = os.path.dirname(os.path.realpath(__file__))
         self.noun_path = os.path.join(dir_path, "word-data", "nouns.json")
-        self.adjective_path = os.path.join(dir_path, "word-data", "adjectives.json")
+        self.adjective_path = os.path.join(
+            dir_path, "word-data", "adjectives.json")
 
     def retrieve_nouns(self):
         with open(self.noun_path) as f:

@@ -13,5 +13,6 @@ class Controller:
         # Opportunity to add a menu for other game modes here
         NounCaseController(self.io_service).main()
 
+
 if __name__ == "__main__":
     Controller().main()

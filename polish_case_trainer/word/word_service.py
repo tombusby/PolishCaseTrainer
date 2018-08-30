@@ -14,5 +14,6 @@ class WordService:
     def get_adjective_list(self):
         adjectives = []
         for obj in self.word_repository.retrieve_adjectives():
-            adjectives.append(self.word_factory.create_adjective_from_json_object(obj))
+            adjectives.append(
+                self.word_factory.create_adjective_from_json_object(obj))
         return adjectives

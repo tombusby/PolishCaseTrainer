@@ -23,6 +23,7 @@ class Question:
     def get_correct_answer(self):
         pass
 
+
 class NounCaseQuestion(Question):
 
     def __init__(self, noun, adjective, number, case):
@@ -32,7 +33,8 @@ class NounCaseQuestion(Question):
             raise TypeError("adjective must be a Ajective object")
         if number == "singular" and case == "nominative":
             raise CaseNotSupported(number, case)
-        adjective.set_gender(noun.get_gender()) # May throw GenderNotSupported Exception
+        # May throw GenderNotSupported Exception
+        adjective.set_gender(noun.get_gender())
         if not noun.supports(number, case) or not adjective.supports(number, case):
             raise CaseNotSupported(number, case)
         self._noun = noun
@@ -63,5 +65,6 @@ class NounCaseQuestion(Question):
 
     def get_correct_answer(self):
         noun_form = self._noun.get_case_form(self._number, self._case)
-        adjective_form = self._adjective.get_case_form(self._number, self._case)
+        adjective_form = self._adjective.get_case_form(
+            self._number, self._case)
         return u"{} {}".format(adjective_form, noun_form)

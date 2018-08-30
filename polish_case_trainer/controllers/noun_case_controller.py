@@ -37,7 +37,8 @@ class NounCaseController:
                 self._available_numbers
             )
             if not numbers:
-                self.io_service.display_message("Error: must select at least one")
+                self.io_service.display_message(
+                    "Error: must select at least one")
             else:
                 break
         while True:
@@ -51,7 +52,8 @@ class NounCaseController:
                 available_cases
             )
             if not cases:
-                self.io_service.display_message("Error: must select at least one")
+                self.io_service.display_message(
+                    "Error: must select at least one")
             else:
                 break
         return numbers, cases
@@ -70,8 +72,6 @@ class NounCaseController:
                 self.io_service.display_message("Correct!\n")
             else:
                 self.io_service.display_message(
-                    u"Incorrect, should have been {}\n".format(question.get_correct_answer())
+                    u"Incorrect, should have been {}\n".format(
+                        question.get_correct_answer())
                 )
-
-if __name__ == "__main__":
-    Controller().main()

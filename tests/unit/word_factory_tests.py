@@ -35,12 +35,14 @@ adjective_sample_obj = json.loads('{"url": "https://en.wiktionary.org/wiki/bogat
     "bogatemu", "locative": "bogatym", "genitive": "bogatego", "nominative": \
     "bogate", "vocative": "bogate"}}}, "word": "bogaty"}')
 
+
 def test_noun_creation():
     word_factory = WordFactory()
     word = word_factory.create_noun_from_json_object(noun_sample_obj)
     assert isinstance(word, Word)
     assert word.get_basic_form() == "ogrodniczka"
     assert word.get_gender() == "f"
+
 
 def test_noun_case_forms():
     word_factory = WordFactory()
@@ -50,16 +52,20 @@ def test_noun_case_forms():
     assert word.get_case_form('singular', 'instrumental') == u"ogrodniczką"
     assert word.get_case_form('plural', 'dative') == "ogrodniczkom"
 
+
 def test_adjective_creation():
     word_factory = WordFactory()
-    adjective = word_factory.create_adjective_from_json_object(adjective_sample_obj)
+    adjective = word_factory.create_adjective_from_json_object(
+        adjective_sample_obj)
     assert isinstance(adjective, Adjective)
     assert adjective.get_basic_form() == "bogaty"
     assert adjective.get_gender() == "m"
 
+
 def test_adjective_case_forms():
     word_factory = WordFactory()
-    adjective = word_factory.create_adjective_from_json_object(adjective_sample_obj)
+    adjective = word_factory.create_adjective_from_json_object(
+        adjective_sample_obj)
     adjective.set_gender("m pers")
     assert adjective.get_case_form('singular', 'accusative') == "bogatego"
     assert adjective.get_case_form('singular', 'dative') == "bogatemu"

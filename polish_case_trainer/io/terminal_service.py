@@ -1,4 +1,6 @@
-import sys, locale, inquirer
+import sys
+import locale
+import inquirer
 
 
 class TerminalService:
@@ -11,7 +13,7 @@ class TerminalService:
             # Will be used later for multiple choice questions
             pass
         elif choices is None:
-            return get_console_input(self)
+            return self.get_console_input()
         else:
             raise TypeError("The choices argument must be a list")
 
@@ -22,9 +24,10 @@ class TerminalService:
     def get_checkbox_options(self, text, choices, default=[]):
         result = inquirer.prompt([
             inquirer.Checkbox("checkbox",
-                message=text + " (X/O -Space to select, Enter to submit)",
-                choices=choices,
-                default=default,
-            ),
+                              message=text +
+                              " (X/O -Space to select, Enter to submit)",
+                              choices=choices,
+                              default=default,
+                              ),
         ])
         return result["checkbox"] if result else None

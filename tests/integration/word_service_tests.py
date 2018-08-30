@@ -25,6 +25,7 @@ def test_retrieve_nouns():
     assert nouns[2].get_case_form("singular", "instrumental") == u"norą"
     assert nouns[2].supports("plural", "nominative")
 
+
 def test_retrieve_adjectives():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     word_repository = WordRepository(dir_path)
@@ -34,10 +35,12 @@ def test_retrieve_adjectives():
     assert len(adjectives) == 3
     assert adjectives[0].get_basic_form() == "alternatywny"
     adjectives[0].set_gender("n")
-    assert adjectives[0].get_case_form("singular", "genitive") == "alternatywnego"
+    assert adjectives[0].get_case_form(
+        "singular", "genitive") == "alternatywnego"
     assert adjectives[0].get_case_form("plural", "vocative") == "alternatywne"
     adjectives[0].set_gender("f")
-    assert adjectives[0].get_case_form("singular", "genitive") == "alternatywnej"
+    assert adjectives[0].get_case_form(
+        "singular", "genitive") == "alternatywnej"
     assert adjectives[1].get_basic_form() == u"lśniący"
     adjectives[1].set_gender("m pers")
     assert adjectives[1].get_case_form("singular", "locative") == u"lśniącym"
@@ -46,7 +49,10 @@ def test_retrieve_adjectives():
     assert adjectives[1].get_case_form("singular", "dative") == u"lśniącemu"
     assert adjectives[2].get_basic_form() == u"poligamiczny"
     adjectives[2].set_gender("m inan")
-    assert adjectives[2].get_case_form("singular", "accusative") == u"poligamiczny"
-    assert adjectives[2].get_case_form("plural", "nominative") == u"poligamiczne"
+    assert adjectives[2].get_case_form(
+        "singular", "accusative") == u"poligamiczny"
+    assert adjectives[2].get_case_form(
+        "plural", "nominative") == u"poligamiczne"
     adjectives[2].set_gender("f")
-    assert adjectives[2].get_case_form("singular", "instrumental") == u"poligamiczną"
+    assert adjectives[2].get_case_form(
+        "singular", "instrumental") == u"poligamiczną"

@@ -27,32 +27,32 @@ def _get_mock_adjective(basic_form, gender_supported=True, case_supported=True):
 
 @raises(TypeError)
 def test_cannot_instantiate_question_abstract_object():
-    question = Question()
+    Question()
 
 
 @raises(TypeError)
 def test_noun_case_question_instantiation_fails_without_arguments():
-    question = NounCaseQuestion()
+    NounCaseQuestion()
 
 
 @raises(TypeError)
 def test_noun_case_question_instantiation_fails_if_first_argument_isnt_word_object():
     noun = Mock()
-    question = NounCaseQuestion(noun, None, None, None)
+    NounCaseQuestion(noun, None, None, None)
 
 
 @raises(TypeError)
 def test_noun_case_question_instantiation_fails_if_second_argument_isnt_adjective_object():
     noun = Mock(spec=Word)
     adjective = Mock()
-    question = NounCaseQuestion(noun, adjective, None, None)
+    NounCaseQuestion(noun, adjective, None, None)
 
 
 @raises(GenderNotSupported)
 def test_noun_case_question_fails_if_adjective_doesnt_have_forms_for_gender():
     noun = _get_mock_noun("kobieta", "f")
     adjective = _get_mock_adjective("dobry", False)
-    question = NounCaseQuestion(noun, adjective, "plural", "nominative")
+    NounCaseQuestion(noun, adjective, "plural", "nominative")
     adjective.set_gender.assert_called()
 
 
@@ -60,7 +60,7 @@ def test_noun_case_question_fails_if_adjective_doesnt_have_forms_for_gender():
 def test_noun_case_question_fails_if_noun_doesnt_support_case_form():
     noun = _get_mock_noun("kobieta", "f", False)
     adjective = _get_mock_adjective("dobry")
-    question = NounCaseQuestion(noun, adjective, "plural", "nominative")
+    NounCaseQuestion(noun, adjective, "plural", "nominative")
     noun.supports.assert_called()
 
 
@@ -68,7 +68,7 @@ def test_noun_case_question_fails_if_noun_doesnt_support_case_form():
 def test_noun_case_question_fails_if_nominative_singular_is_requested():
     noun = _get_mock_noun("kobieta", "f")
     adjective = _get_mock_adjective("dobry")
-    question = NounCaseQuestion(noun, adjective, "singular", "nominative")
+    NounCaseQuestion(noun, adjective, "singular", "nominative")
     adjective.supports.assert_called()
 
 
@@ -76,7 +76,7 @@ def test_noun_case_question_fails_if_nominative_singular_is_requested():
 def test_noun_case_question_fails_if_adjective_doesnt_support_case_form():
     noun = _get_mock_noun("kobieta", "f")
     adjective = _get_mock_adjective("dobry", True, False)
-    question = NounCaseQuestion(noun, adjective, "plural", "nominative")
+    NounCaseQuestion(noun, adjective, "plural", "nominative")
     adjective.supports.assert_called()
 
 

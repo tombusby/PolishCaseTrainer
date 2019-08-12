@@ -50,7 +50,7 @@ pyodbc==4.0.17
 pyOpenSSL==17.5.0
 pyserial==3.4
 pysqlite==2.7.0
-pyxdg==0.25
+pyxdg==0.26
 scandir==1.7
 SecretStorage==2.3.1
 service-identity==16.0.0

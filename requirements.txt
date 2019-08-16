@@ -59,7 +59,7 @@ singledispatch==3.4.0.3
 six==1.11.0
 torbrowser-launcher==0.2.9
 traitlets==4.3.2
-Twisted==19.2.1
+Twisted==19.7.0
 txsocksx==0.0.0
 virtualenv==16.0.0
 wcwidth==0.1.7

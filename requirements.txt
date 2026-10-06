@@ -61,7 +61,7 @@ torbrowser-launcher==0.2.9
 traitlets==4.3.2
 Twisted==22.10.0
 txsocksx==0.0.0
-virtualenv==16.0.0
+virtualenv==21.7.13
 wcwidth==0.1.7
 wrapt==1.10.11
 zope.interface==4.3.2

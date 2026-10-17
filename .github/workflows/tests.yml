@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # The project is Python 2.7, which setup-python no longer provides,
+      # so the suite runs inside the official python:2.7 image.
+      - name: Run tests
+        run: >
+          docker run --rm -v "$PWD":/src -w /src python:2.7
+          sh -c "pip install -r requirements.txt && nosetests -v tests/unit tests/integration"

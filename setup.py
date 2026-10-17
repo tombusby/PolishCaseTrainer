@@ -10,7 +10,7 @@ config = {
     'download_url': 'https://github.com/tombusby/PolishCaseTrainer',
     'author_email': 'tom@busby.ninja',
     'version': '0.1',
-    'install_requires': ['nose', 'mock'],
+    'install_requires': ['inquirer', 'nose', 'mock'],
     'packages': ['polish_case_trainer'],
     'scripts': ['bin/polish_case_trainer'],
     'data_files': [('polish_case_trainer/word-data', [

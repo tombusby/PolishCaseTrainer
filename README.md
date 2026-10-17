@@ -1,5 +1,5 @@
 
-# Polish Case Trainer [![Build Status](https://travis-ci.org/tombusby/PolishCaseTrainer.svg?branch=master)](https://travis-ci.org/tombusby/PolishCaseTrainer)
+# Polish Case Trainer [![Tests](https://github.com/tombusby/PolishCaseTrainer/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/tombusby/PolishCaseTrainer/actions/workflows/tests.yml)
 
 This is a simple CLI program to allow a learner of the Polish Language to practice case declension. Those people who have attempted to learn Polish as a non-native speaker will be aware just how complex the case system is.
 
